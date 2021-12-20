@@ -4,6 +4,9 @@ from Text import Text
 
 pygame.init()
 
+pygame.font.init()
+myfont = pygame.font.SysFont('Comic Sans MS', 30)
+
 screen = pygame.display.set_mode([500, 500])
 
 text = Text()
@@ -17,14 +20,22 @@ while running:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_q:
                 text.add_char('q')
+            if event.key == pygame.K_w:
+                text.add_char('w')
             if event.key == pygame.K_DELETE:
                 text.delete()
-
-    # listen for key strokes, ready to update the text class
+            if event.key == pygame.K_BACKSPACE:
+                text.backspace()
+            if event.key == pygame.K_LEFT:
+                text.cursor_left()
+            if event.key == pygame.K_RIGHT:
+                text.cursor_right()
 
     screen.fill((255, 255, 255))
 
-    # draw text based on the text class
+    for line_number, line in enumerate(text.get_text()):
+        textsurface = myfont.render(line, False, (0, 0, 0))
+        screen.blit(textsurface,(0,line_number*20))
 
     pygame.display.flip()
 
