@@ -1,11 +1,12 @@
 # for specialised design, we want to have the cursor as its own separate class
+# passing cursor as an argument to 
 
 class Text:
     def __init__(self):
         self._text = ''
         self._cursor_position = 0
 
-    def add_char(self, char):
+    def insert(self, char):
         self._text += char
 
     def backspace(self):
@@ -29,11 +30,8 @@ class Text:
         print(self._cursor_position)
 
     def get_text(self):
-        # outputs text in lines of length 30
-        # interesting interplay between info hiding and gen purp
-        # should I specify line length in the interface, or have it as an attribute in this class (better for info hiding)
-        # or, to keep module general purpose, should I handle multiple lines in UI (ie just return one long string)? 
-        # To answer, consider 3 guiding questions in README
+        # this doesn't seem especially general purpose, we have the length of the line we want in browser
+        # also, exposes data structure of list, information leakage, if we change from list, we have problems. 
         lines = ['']
         for index, char in enumerate(self._text):
             if index % 30 == 0:
