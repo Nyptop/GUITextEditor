@@ -1,3 +1,6 @@
+# this is the design you're more likely to implement - knowing about the GUI class where
+# you need to implement, natural to design text class with the GUI in mind. 
+
 # for specialised design, we want to have the cursor as its own separate class
 # passing cursor as an argument to delete? Or actually, having cursor attribute and
 # methods is just as bad?
@@ -13,12 +16,18 @@
 # increasing it substantially here. Better to increase complexity slightly for the 
 # caller, but to make it substantially simpler here. 
 
+# on change, less information leakage, design decisions contained to one place (this adds up over time).
+# Also, if you wish to use the class for another purpose you can (not the main reason, 
+# not as common a benefit but still worth mentioning).
+# example of a change: creating a new interface operation (like space), in specialised design
+# means we need to define a new method. In general purpose design, we could just use insert method.
+
 class Text:
     def __init__(self):
         self._text = ''
         self._cursor_position = 0
 
-    def insert(self, char):
+    def insert_char(self, char):
         self._text = self._text[:self._cursor_position] + char + self._text[self._cursor_position:]
 
     def backspace(self):

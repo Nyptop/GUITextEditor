@@ -19,9 +19,9 @@ while running:
             running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_q:
-                text.insert('q')
+                text.insert_char('q')
             if event.key == pygame.K_w:
-                text.insert('w')
+                text.insert_char('w')
             if event.key == pygame.K_DELETE:
                 text.delete()
             if event.key == pygame.K_BACKSPACE:
