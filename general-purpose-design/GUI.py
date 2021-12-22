@@ -44,6 +44,9 @@ while running:
     # general purpose. Does the text class need to have a concept of line
     # length? No, this is something visual, so belongs to the user 
     # interface. 
+
+    # You could say this is bad for information hiding, but having it in text also bad for info hiding
+    # because info has been leaked to text about the UI if we put the code below in text class. 
     lines = [''] 
     for char_number, char in enumerate(text.get_text()):
         if char_number == cursor_position:

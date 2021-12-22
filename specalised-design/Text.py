@@ -2,13 +2,23 @@
 # passing cursor as an argument to delete? Or actually, having cursor attribute and
 # methods is just as bad?
 
+# this design is a lot longer than for general purpose, but with what benefit? 
+# the interface within the class (all the methods) is great here, and there are
+# a lot more methods, but it doesn't make life that much easier for the caller
+# and crucially, this class is more difficult to understand. 
+
+# important way to think about cognitive load: our goal is to reduce the complexity 
+# of the system as a whole. That means here, and with the caller. In the specialised
+# design, we are decreasing complexity (only slightly) for the caller, and we are 
+# increasing it substantially here. Better to increase complexity slightly for the 
+# caller, but to make it substantially simpler here. 
+
 class Text:
     def __init__(self):
         self._text = ''
         self._cursor_position = 0
 
     def insert(self, char):
-        # using all these self. ... feels wrong, ask about this
         self._text = self._text[:self._cursor_position] + char + self._text[self._cursor_position:]
 
     def backspace(self):
@@ -48,5 +58,6 @@ class Text:
                 char = 'a'
             lines[-1] += char
         return lines
+
                 
 
