@@ -1,3 +1,5 @@
+# this design could be used in different setting to GUI like ...
+
 class Text:
     def __init__(self):
         self._text = ''
