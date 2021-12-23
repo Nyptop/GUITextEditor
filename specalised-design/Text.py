@@ -27,8 +27,6 @@ class Text:
         print(self._cursor_position)
 
     def get_text(self):
-        # this doesn't seem especially general purpose, we have the length of the line we want in browser
-        # also, exposes data structure of list, information leakage, if we change from list, we have problems. 
         lines = ['']
         for index, char in enumerate(self._text):
             if index % 30 == 0:
