@@ -54,3 +54,12 @@ this is quite a shallow class and is also very similar to backspace
 ### on get text method in specialised design 
 this doesn't seem especially general purpose, we have the length of the line we want in browser
 also, exposes data structure of list, information leakage, if we change from list, we have problems. 
+
+## on moving lines logic out of text class 
+it makes sense to move this logic here (or into UI class) and make the text class more
+general purpose. Does the text class need to have a concept of line
+length? No, this is something visual, so belongs to the user 
+interface. 
+
+You could say this is bad for information hiding, but having it in text also bad for info hiding
+because info has been leaked to text about the UI if we put the code below in text class. 

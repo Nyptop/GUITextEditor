@@ -19,12 +19,10 @@ class Text:
     def cursor_left(self):
         if self._cursor_position > 0:
             self._cursor_position -= 1
-            print(self._cursor_position)
 
     def cursor_right(self):
         if self._cursor_position <= len(self._text):
             self._cursor_position += 1
-        print(self._cursor_position)
 
     def get_text(self):
         lines = ['']
@@ -32,7 +30,7 @@ class Text:
             if index % 30 == 0:
                 lines.append('')
             if self._cursor_position == index:
-                char = 'a'
+                char = ']' + char
             lines[-1] += char
         return lines
 
