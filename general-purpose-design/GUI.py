@@ -1,7 +1,5 @@
 import pygame
 
-# perhaps best to also create a UI class for both specialised and general purpose
-
 from Text import Text
 
 pygame.init()
@@ -40,17 +38,12 @@ while running:
 
     screen.fill((255, 255, 255))
 
-    # it makes sense to move this logic here (or into UI class) and make the text class more
-    # general purpose. Does the text class need to have a concept of line
-    # length? No, this is something visual, so belongs to the user 
-    # interface. 
+    print(cursor_position)
 
-    # You could say this is bad for information hiding, but having it in text also bad for info hiding
-    # because info has been leaked to text about the UI if we put the code below in text class. 
     lines = [''] 
     for char_number, char in enumerate(text.get_text()):
         if char_number == cursor_position:
-            lines[-1] += 'a'
+            lines[-1] += ']' + char
         else:
             lines[-1] += char
         if len(lines[-1]) > 30:
